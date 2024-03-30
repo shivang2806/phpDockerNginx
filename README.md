@@ -1,6 +1,12 @@
 # phpDockerNginx
 phpDockerNginx
 
+# Change Your IP in nginx.conf
+
+- location / { proxy_pass  http://192.168.1.8:81/; }
+
+- location / { proxy_pass  http://YOUR_IP:81/; }
+
 # Commands
 
 - sudo docker ps

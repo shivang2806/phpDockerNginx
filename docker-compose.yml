@@ -13,6 +13,7 @@ services:
   web:
     build:
       context: .
+      dockerfile: ./dockerfile
     container_name: web
     ports:
      - "81:80"
@@ -36,3 +37,33 @@ services:
      - "83:80"
     volumes:
       - ./web3/:/var/www/html
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: "phpNginx"
+      MYSQL_ROOT_PASSWORD: "shivang"
+      MYSQL_PASSWORD: "admin@123"
+      MYSQL_USER: "admin"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "mysql"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - '3308:3306'
+    
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    depends_on:
+      - mysql
+    ports:
+      - 2021:80
+
