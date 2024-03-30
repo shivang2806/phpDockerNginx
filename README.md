@@ -28,3 +28,25 @@ phpDockerNginx
 - http://localhost:90/web2 => web2:82 // container
 
 - http://localhost:90/web3 => web3:83 // container
+
+# Laravel Web 1 container
+
+- with out php artisan serve
+
+- laravel databse connected with mysql container
+
+- sudo docker exec -it CONTAINER_ID bash
+
+- composer install
+
+- php artisan migrate
+
+- & all laravel commands
+
+# Docker Images
+
+- php, nginx, mysql, phpmyadmin, web1, web2, web3
+
+# Current Directory Folders
+
+- mysql, web1, web2, web3 , + docker_files
